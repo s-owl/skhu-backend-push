@@ -9,7 +9,7 @@
   
 <body>
    <div class= "container" id = "board">
-   <table>
+   <table class="table-striped">
       <tr  class = "board_title">
          <th>NO</th>
          <th class="board_title">제목</th>
@@ -18,13 +18,13 @@
       </tr>
       
        <c:forEach var="list" varStatus="i" items="${list}">
-       <tr onclick="test(${list.board_no} ,${board_category })">
-             <th scope="row">${list.no }</th>
-            <td class="td_title">${list.board_title }</a></td>
-            <td class="td_sub">${list.board_writer }</td>
-            <td class="td_sub">${list.board_insertdate }</td>
-            <input type="hidden" value="${list.board_no}" name="board_no" />
-      </tr>
+	      <tr onclick="test(${list.board_no} ,${board_category })">
+	            <th scope="row">${list.no }</th>
+	            <td class="td_title">${list.board_title }</a></td>
+	            <td class="td_sub">${list.board_writer }</td>
+	            <td class="td_sub">${list.board_insertdate }</td>
+	            <input type="hidden" value="${list.board_no}" name="board_no" />
+	      </tr>
       </c:forEach>
       
    </table>

@@ -5,24 +5,14 @@
 <script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
-<link rel="stylesheet" href="/resources/bootstrap/styles/cart_responsive.css">
-<link rel="stylesheet" href="/resources/bootstrap/styles/cart.css">
-<link rel="stylesheet" href="/resources/bootstrap/styles/categories_responsive.css">
-<link rel="stylesheet" href="/resources/bootstrap/styles/categories.css">
-<link rel="stylesheet" href="/resources/bootstrap/styles/checkout_responsive.css">
-<link rel="stylesheet" href="/resources/bootstrap/styles/checkout.css">
-<link rel="stylesheet" href="/resources/bootstrap/styles/contact_responsive.css">
-<link rel="stylesheet" href="/resources/bootstrap/styles/contact.css">
-<link rel="stylesheet" href="/resources/bootstrap/styles/main_styles.css">
-<link rel="stylesheet" href="/resources/bootstrap/styles/product_responsive.css">
-<link rel="stylesheet" href="/resources/bootstrap/styles/product.css">
-<link rel="stylesheet" href="/resources/bootstrap/styles/responsive.css">
-<link rel="stylesheet" href="/resources/bootstrap/styles/footer.css">
-<link rel="stylesheet" href="/resources/bootstrap/styles/board.css">
-<link rel="stylesheet" href="/resources/bootstrap/styles/navigation.css">
-<link rel="stylesheet" href="/resources/bootstrap/styles/QnA.css">
-<link rel="stylesheet" href="/resources/bootstrap/styles/boardOne.css">
-
+<link rel="stylesheet" href="/resources/bootstrap/css/animated.min.css">
+<link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/resources/bootstrap/css/font-awesome.min.css">
+<link rel="stylesheet" href="/resources/bootstrap/css/lightbox.css">
+<!-- <link rel="stylesheet" href="/resources/bootstrap/css/login.min.css"> -->
+<link rel="stylesheet" href="/resources/bootstrap/css/main.css">
+<link rel="stylesheet" href="/resources/bootstrap/css/prettyPhoto.css">
+<link rel="stylesheet" href="/resources/bootstrap/css/responsive.css">
 
 
 
@@ -35,27 +25,20 @@
 
 <head>
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">  
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
-<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" href="plugins/OwlCarousel2-2.2.1/animate.css">
-<link rel="stylesheet" href="styles/main_styles.css">
-<link rel="stylesheet" href="styles/responsive.css">
 
 </head>
 
 
-<div id="container" style="padding-top: 50px">
+<!-- <div id="container" style="padding-top: 50px"> -->
 
 </div>
 <body>
 
 </body>
 
-<%@ include file="/WEB-INF/views/include/footer.jsp"%>
+<%-- <%@ include file="/WEB-INF/views/include/footer.jsp"%> --%>
 <%@ include file="/WEB-INF/views/include/navigation.jsp"%>
 
 <script type="text/javascript" src="/resources/bootstrap/js/jquery-1.11.2.min.js"></script>
