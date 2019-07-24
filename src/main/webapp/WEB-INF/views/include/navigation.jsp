@@ -10,12 +10,13 @@
 							<c:if test="${pageContext.request.userPrincipal.name != null}">
 		                       <form:form action="${pageContext.request.contextPath }/logout" method="POST">
 		                          <b>${pageContext.request.userPrincipal.name }</b>님 안녕하세요
-		                          <input class = "logoutBtn" type="submit" value="Logout" class = "logoutBtn"/>
+		                          <button type="submit" class = "btn btn-sm btn-default">LOGOUT</button>
 		                       </form:form>
 		                    </c:if>
 		                    <c:if test="${pageContext.request.userPrincipal.name ==null}">
-		                       <a class = "loginBtn" href="<c:url value="/login"/>">Login </a><br>
-		                    </c:if>                        </ul>
+		                       <li><a href="/login"><h5><b><x>Login</x></b></h5></a></li>
+		                    </c:if>                        
+		         	</ul>
                  </div>
              </div>
           </div>

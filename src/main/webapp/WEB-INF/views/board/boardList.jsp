@@ -9,8 +9,8 @@
   
 <body>
    <div class= "container" id = "board">
-   <table class="table-striped">
-      <tr  class = "board_title">
+   <table class="table table-striped">
+      <tr class = "board_title">
          <th>NO</th>
          <th class="board_title">제목</th>
          <th>작성자</th>
@@ -31,7 +31,7 @@
    <br />
    <div id="searching">
    <ul class="searching">
-      <li class="li_button"><button type="button" onclick="boardInsert('${board_category}')"><span class="glyphicon glyphicon-pencil"></span> 글쓰기</button></li>
+      <li class="li_button"><button class="btn btn-default pull-left" type="button" onclick="boardInsert('${board_category}')"><span class="glyphicon glyphicon-pencil"></span> 글쓰기</button></li>
       <li> <%--검색 처리 영역--%>
   
        <div class="form-group col-sm-9"> 
