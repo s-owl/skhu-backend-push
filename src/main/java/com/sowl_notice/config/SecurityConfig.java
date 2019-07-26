@@ -29,9 +29,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
    @Override
    protected void configure(HttpSecurity http) throws Exception{
-      http.authorizeRequests().antMatchers("/webjars/**").permitAll();
-      http.authorizeRequests().antMatchers("/resources/**").permitAll();
-      http.authorizeRequests()
+	   http.formLogin().usernameParameter("member_id")
+	   					.passwordParameter("member_pw")
+	   					.loginProcessingUrl("/login")
+	   					.loginPage("/member/logIn")
+	   					.defaultSuccessUrl("/");
+	   
+	   http.logout().invalidateHttpSession(true)
+	   				.deleteCookies("JSESSIONID,SPRING_SECURITY_REMEMBER_ME_COOKIE")
+	   				.logoutUrl("/logout")
+	   				.logoutSuccessUrl("/");
+	   
+       http.authorizeRequests().antMatchers("/webjars/**").permitAll();
+       http.authorizeRequests().antMatchers("/resources/**").permitAll();
+       http.authorizeRequests()
 						      .antMatchers("/QnA/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_SUPER')")
 						      .and()
 						      .formLogin().permitAll() //누구나 접근이 가능해야 한다.

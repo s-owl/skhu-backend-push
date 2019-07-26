@@ -32,4 +32,14 @@ public class MemberController {
 		return "main";
 	}
 
+	@RequestMapping(value="/member/logIn", method = RequestMethod.GET)
+	public String logIn() {
+		return "/member/logIn";
+	}
+	
+	@RequestMapping(value="/member/signIn", method = RequestMethod.GET)
+	public String signIn() {
+		return "/member/signIn";
+	}
+
 }

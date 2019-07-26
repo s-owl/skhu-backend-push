@@ -2888,3 +2888,14 @@ span.stButton_gradient,
     top: 111px;
     right: 3%;
 }
+.loginSaveBtn{
+	vertical-align: middle;
+	float: left;
+}
+.logInBtn{
+	float: right
+}
+.logInArea{
+	vertical-align: middle;
+	padding-bottom: 40px;
+}
