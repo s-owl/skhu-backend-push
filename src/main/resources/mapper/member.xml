@@ -7,18 +7,9 @@
 		SELECT 
 							*
 		FROM 
-							SOWL_USER
+							MEMBER
 		WHERE	
-							USER_ID = #{user_id}
-	
-	</select>
-	<select id="readAuthority" parameterType="String" resultType="String">
-		SELECT
-							USER_AUTHONAME
-		FROM
-							SOWL_AUTHO
-		WHERE	
-							USER_ID = #{user_id}
+							MEMBER_ID = #{member_id}
 	
 	</select>
 

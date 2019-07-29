@@ -1,10 +1,28 @@
 package com.sowl_notice.service;
 
-import org.apache.ibatis.javassist.compiler.ast.Member;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
+import com.sowl_notice.dao.MemberDao;
 import com.sowl_notice.model.MemberModel;
 
-public interface MemberService {
-	public MemberModel readUser(String user_id);
+@Service
+public class MemberService implements UserDetailsService{
 	
+	@Autowired
+	MemberDao dao;
+	
+
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		MemberModel user = dao.readUser(username);
+		if(user == null) {
+			throw new UsernameNotFoundException(username);
+		}
+		return user;
+	}
 }

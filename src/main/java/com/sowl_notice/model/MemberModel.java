@@ -1,31 +1,84 @@
 package com.sowl_notice.model;
 
-import lombok.Getter;
-import lombok.Setter;
-
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-@Getter@Setter
-
-public class MemberModel {
-   private String user_id;
-   private String user_password;
-   private String user_name;
-   private boolean user_isAccountNonExpired; 
-   private boolean user_isAccountNonLocked;
-   private boolean user_isCredentialsNonExpired;
-   private boolean user_isEnabled;
-   
-   private Collection<? extends GrantedAuthority> authorities;
-   
-   public Collection<? extends GrantedAuthority> getAuthorities() {
-       return authorities;
-   }
-
-   public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
-       this.authorities = authorities;
-   }
+public class MemberModel implements UserDetails{
+	private int  	member_no;
+	private String  member_name;
+	private String  member_id;
+	private String  member_pw;
+	private String  member_department;
+	private int 	member_pnum;
+	private String  member_authority;
+	private boolean member_delflag;
+	
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		ArrayList<GrantedAuthority> auth = new ArrayList<GrantedAuthority>();
+		auth.add(new SimpleGrantedAuthority(member_authority));
+		return auth;
+	}
+	@Override
+	public String getPassword() {
+		return member_pw;
+	}
+	public void setPassword(String member_pw) {
+		this.member_pw = member_pw;
+	}
+	
+	@Override
+	public String getUsername() {
+		return member_id;
+	}
+	public void setUsername(String member_id) {
+		this.member_id = member_id;
+	}
+	
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+	@Override
+	public boolean isEnabled() {
+		return member_delflag;
+	}
+	public int getMember_no() {
+		return member_no;
+	}
+	public void setMember_no(int member_no) {
+		this.member_no = member_no;
+	}
+	public String getMember_name() {
+		return member_name;
+	}
+	public void setMember_name(String member_name) {
+		this.member_name = member_name;
+	}
+	public String getMember_department() {
+		return member_department;
+	}
+	public void setMember_department(String member_department) {
+		this.member_department = member_department;
+	}
+	public int getMember_pnum() {
+		return member_pnum;
+	}
+	public void setMember_pnum(int member_pnum) {
+		this.member_pnum = member_pnum;
+	}
+	
 
 }

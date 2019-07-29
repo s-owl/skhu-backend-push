@@ -1,31 +1,30 @@
 package com.sowl_notice.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 //import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
-//import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import com.sowl_notice.service.MemberService;
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled= true)
 //@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-   
-   @Autowired
-   public void configure(AuthenticationManagerBuilder auth) throws Exception {
-      //ADMIN 계정 정보 세팅 , 서버를 새로 업데이트한다(inMemoryAuthentication)
-//      auth.inMemoryAuthentication().withUser("admin").password("{noop}master001").roles("ADMIN");
-      auth.inMemoryAuthentication().withUser("test").password("{noop}1").roles("ADMIN");
-      auth.inMemoryAuthentication().withUser("박동현").password("{noop}1").roles("ADMIN");
-      auth.inMemoryAuthentication().withUser("김동욱").password("{noop}1").roles("ADMIN");
-      auth.inMemoryAuthentication().withUser("감자2치킨1").password("{noop}1").roles("ADMIN");
-      auth.inMemoryAuthentication().withUser("관리자").password("{noop}1").roles("ADMIN");
-
-   }
+	
+	@Autowired
+	MemberService memberService;
+	
+//	@Bean
+//	public PasswordEncoder passwordEncoder() {
+//		return new BCryptPasswordEncoder();
+//	}
 
    @Override
    protected void configure(HttpSecurity http) throws Exception{
@@ -36,9 +35,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	   					.defaultSuccessUrl("/");
 	   
 	   http.logout().invalidateHttpSession(true)
-	   				.deleteCookies("JSESSIONID,SPRING_SECURITY_REMEMBER_ME_COOKIE")
+//	   				.deleteCookies("JSESSIONID,SPRING_SECURITY_REMEMBER_ME_COOKIE")
 	   				.logoutUrl("/logout")
 	   				.logoutSuccessUrl("/");
+	   
+	   http.rememberMe().key("remkey").tokenValiditySeconds(3600);
+	   
+	   http.sessionManagement().maximumSessions(1).expiredUrl("/logIn").maxSessionsPreventsLogin(true);
 	   
        http.authorizeRequests().antMatchers("/webjars/**").permitAll();
        http.authorizeRequests().antMatchers("/resources/**").permitAll();
@@ -55,6 +58,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 						      .and()
 						      .logout().permitAll().logoutSuccessUrl("/");
    }
+   
+   @Override
+   protected void configure(AuthenticationManagerBuilder auth)throws Exception{
+	   auth.userDetailsService(memberService);
+   }
+   
    
    
 
