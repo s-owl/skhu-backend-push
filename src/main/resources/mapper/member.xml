@@ -12,6 +12,29 @@
 							MEMBER_ID = #{member_id}
 	
 	</select>
+	
+	<insert id="signIn" parameterType="com.sowl_notice.model.MemberModel">
+		INSERT 
+		INTO 
+		MEMBER
+							(
+							MEMBER_NO, 
+							MEMBER_NAME, 
+							MEMBER_ID, 
+							MEMBER_PW, 
+							MEMBER_DEPARTMENT, 
+							MEMBER_PNUM 
+							) 
+		VALUES
+							(
+							#{ member_no},
+							#{ member_name},
+							#{ member_id},
+							#{ member_pw},
+							#{ member_department}, 
+							#{ member_pnum}
+							)
+	</insert>
 
 
 </mapper>

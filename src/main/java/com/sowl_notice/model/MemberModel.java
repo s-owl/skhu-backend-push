@@ -8,6 +8,12 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class MemberModel implements UserDetails{
+	@Override
+	public String toString() {
+		return "MemberModel [member_no=" + member_no + ", member_name=" + member_name + ", member_id=" + member_id
+				+ ", member_pw=" + member_pw + ", member_department=" + member_department + ", member_pnum="
+				+ member_pnum + ", member_authority=" + member_authority + ", member_delflag=" + member_delflag + "]";
+	}
 	private int  	member_no;
 	private String  member_name;
 	private String  member_id;

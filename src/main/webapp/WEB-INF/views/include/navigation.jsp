@@ -15,6 +15,7 @@
 		                    </c:if>
 		                    <c:if test="${pageContext.request.userPrincipal.name ==null}">
 		                       <li><a href="/member/logIn"><h5><b><x>Login</x></b></h5></a></li>
+		                       <li><a href="/member/signIn"><h5><b><x>SignIn</x></b></h5></a></li>
 		                    </c:if>                        
 		         	</ul>
                  </div>

@@ -6,5 +6,6 @@ import com.sowl_notice.model.MemberModel;
 
 public interface MemberDao {
    MemberModel readUser(String user_id);
+   int signIn(MemberModel memberModel);
    
 }

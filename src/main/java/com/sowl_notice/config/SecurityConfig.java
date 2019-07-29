@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 //import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -21,10 +22,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	MemberService memberService;
 	
-//	@Bean
-//	public PasswordEncoder passwordEncoder() {
-//		return new BCryptPasswordEncoder();
-//	}
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 
    @Override
    protected void configure(HttpSecurity http) throws Exception{
@@ -51,7 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 						      .formLogin().permitAll() //누구나 접근이 가능해야 한다.
 						      .and()
 						      .logout().permitAll().logoutSuccessUrl("/");
-						      http.authorizeRequests()
+       http.authorizeRequests()
 						      .antMatchers("/board/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_SUPER')")
 						      .and()
 						      .formLogin().permitAll() //누구나 접근이 가능해야 한다.
@@ -61,7 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
    
    @Override
    protected void configure(AuthenticationManagerBuilder auth)throws Exception{
-	   auth.userDetailsService(memberService);
+	   auth.userDetailsService(memberService).passwordEncoder(passwordEncoder());
    }
    
    

@@ -15,8 +15,6 @@ public class MemberService implements UserDetailsService{
 	@Autowired
 	MemberDao dao;
 	
-
-
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		MemberModel user = dao.readUser(username);
@@ -24,5 +22,9 @@ public class MemberService implements UserDetailsService{
 			throw new UsernameNotFoundException(username);
 		}
 		return user;
+	}
+	
+	public int signIn(MemberModel memberModel) {
+		return dao.signIn(memberModel);
 	}
 }
