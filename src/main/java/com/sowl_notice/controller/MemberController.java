@@ -47,15 +47,15 @@ public class MemberController {
 		return "/member/signIn";
 	}
 	
-	@RequestMapping(value="/member/signInDo", method = RequestMethod.GET)
+	@RequestMapping(value="/member/signInDo", method = RequestMethod.POST)
 	public String logInDo(Model model, MemberModel memberModel,
 			@RequestParam("member_id") String member_id,
 			@RequestParam("member_pw") String member_pw
 			) {
 		memberModel.setUsername(member_id);
 		String pass = encoder.encode(member_pw);
+		System.out.println(member_pw);
 		memberModel.setPassword(pass);
-		System.out.println(memberModel.toString());
 		memberDao.signIn(memberModel);
 		return "redirect:/";
 	}

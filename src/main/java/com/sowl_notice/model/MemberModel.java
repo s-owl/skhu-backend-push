@@ -18,7 +18,7 @@ public class MemberModel implements UserDetails{
 	private String  member_name;
 	private String  member_id;
 	private String  member_pw;
-	private String  member_department;
+	private int 	member_department;
 	private int 	member_pnum;
 	private String  member_authority;
 	private boolean member_delflag;
@@ -73,10 +73,10 @@ public class MemberModel implements UserDetails{
 	public void setMember_name(String member_name) {
 		this.member_name = member_name;
 	}
-	public String getMember_department() {
+	public int getMember_department() {
 		return member_department;
 	}
-	public void setMember_department(String member_department) {
+	public void setMember_department(int member_department) {
 		this.member_department = member_department;
 	}
 	public int getMember_pnum() {

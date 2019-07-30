@@ -42,6 +42,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	   
 	   http.rememberMe().key("remkey").tokenValiditySeconds(3600);
 	   
+	   http.csrf().disable();
+	   
 	   http.sessionManagement().maximumSessions(1).expiredUrl("/logIn").maxSessionsPreventsLogin(true);
 	   
        http.authorizeRequests().antMatchers("/webjars/**").permitAll();
