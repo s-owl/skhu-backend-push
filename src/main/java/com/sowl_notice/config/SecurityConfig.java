@@ -35,6 +35,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	   					.loginPage("/member/logIn")
 	   					.defaultSuccessUrl("/");
 	   
+	   http.authorizeRequests()
+	      .antMatchers("/webjars/**").permitAll()
+	      .antMatchers("/resources/**").permitAll()
+	      .antMatchers("/board/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_SUPER')")
+	      .antMatchers("/member/**").access("isAnonymous()");
+	      ;
+	   http.exceptionHandling().accessDeniedPage("/member/accessDenyPage");
+	      
 	   http.logout().invalidateHttpSession(true)
 //	   				.deleteCookies("JSESSIONID,SPRING_SECURITY_REMEMBER_ME_COOKIE")
 	   				.logoutUrl("/logout")
@@ -45,21 +53,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	   http.csrf().disable();
 	   
 	   http.sessionManagement().maximumSessions(1).expiredUrl("/logIn").maxSessionsPreventsLogin(true);
-	   
-       http.authorizeRequests().antMatchers("/webjars/**").permitAll();
-       http.authorizeRequests().antMatchers("/resources/**").permitAll();
-       http.authorizeRequests()
-						      .antMatchers("/QnA/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_SUPER')")
-						      .and()
-						      .formLogin().permitAll() //누구나 접근이 가능해야 한다.
-						      .and()
-						      .logout().permitAll().logoutSuccessUrl("/");
-       http.authorizeRequests()
-						      .antMatchers("/board/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_SUPER')")
-						      .and()
-						      .formLogin().permitAll() //누구나 접근이 가능해야 한다.
-						      .and()
-						      .logout().permitAll().logoutSuccessUrl("/");
    }
    
    @Override

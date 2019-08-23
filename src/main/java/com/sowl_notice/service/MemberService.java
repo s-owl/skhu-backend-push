@@ -27,4 +27,14 @@ public class MemberService implements UserDetailsService{
 	public int signIn(MemberModel memberModel) {
 		return dao.signIn(memberModel);
 	}
+	
+	public int checkMemberId(String member_id) {
+		return dao.checkMemberId(member_id);
+	}
+	
+	public int memberNoCheck(int member_no)
+	{
+		return dao.memberNoCheck(member_no);
+	}
+
 }

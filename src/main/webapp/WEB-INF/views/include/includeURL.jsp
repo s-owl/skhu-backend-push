@@ -27,13 +27,16 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">  
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<style type="text/css">
+	blue {color : blue; margin-left : 3%;}
+	red  {color : red; margin-left : 3%;}
+</style>
 </head>
 
 
 <!-- <div id="container" style="padding-top: 50px"> -->
 
-</div>
+<!-- </div> -->
 <body>
 
 </body>
@@ -41,7 +44,12 @@
 <%-- <%@ include file="/WEB-INF/views/include/footer.jsp"%> --%>
 <%@ include file="/WEB-INF/views/include/navigation.jsp"%>
 
-<script type="text/javascript" src="/resources/bootstrap/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/resources/bootstrap/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/resources/bootstrap/js/jquery.countTo.js"></script>
+<script type="text/javascript" src="/resources/bootstrap/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/resources/bootstrap/js/jquery.isotope.min.js"></script>
+<script type="text/javascript" src="/resources/bootstrap/js/jquery.js"></script>
+
 
 <!-- Load Booststrap -->
 <script type="text/javascript" src="/resources/bootstrap/js/bootstrap.js"></script>

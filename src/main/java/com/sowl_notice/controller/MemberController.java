@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sowl_notice.dao.MemberDao;
@@ -54,10 +55,26 @@ public class MemberController {
 			) {
 		memberModel.setUsername(member_id);
 		String pass = encoder.encode(member_pw);
-		System.out.println(member_pw);
 		memberModel.setPassword(pass);
 		memberDao.signIn(memberModel);
 		return "redirect:/";
 	}
-
+	
+	@RequestMapping(value="/member/checkMemberId", method = RequestMethod.POST)
+	@ResponseBody
+	public int checkMemberId(String member_id) throws Exception {
+		return memberDao.checkMemberId(member_id);
+	}
+	
+	@RequestMapping(value="/member/memberNoCheck", method = RequestMethod.POST)
+	@ResponseBody
+	public int memberNoCheck(int member_no) throws Exception {
+		return memberDao.memberNoCheck(member_no);
+	}
+	
+	@RequestMapping(value="/member/accessDenyPage")
+	public String accessDenyPage() {
+		return "/member/accessDenyPage";
+	}
+	
 }

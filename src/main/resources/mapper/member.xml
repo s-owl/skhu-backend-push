@@ -35,6 +35,24 @@
 							#{ member_pnum}
 							)
 	</insert>
+	
+	<select id="checkMemberId" parameterType="String" resultType="int">
+		SELECT 
+							COUNT(MEMBER_ID) 
+		FROM 
+							MEMBER 
+		WHERE 
+							MEMBER_ID = #{member_id}
+	</select>
+	
+	<select id="memberNoCheck" parameterType="int" resultType="int">
+		SELECT
+							COUNT(MEMBER_NO)
+		FROM
+							MEMBER
+		WHERE
+							MEMBER_NO = #{member_no}
+	</select>
 
 
 </mapper>
